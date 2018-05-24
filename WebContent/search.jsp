@@ -11,5 +11,6 @@
 <%=bean.getId()%>
 <%=bean.getName()%>
 <%=bean.getDate() %>
+<%=bean.getSex().getSex() %>
 </body>
 </html>

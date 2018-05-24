@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.SexEnum;
 import vo.KaiinnVo;
 
 public class KaiinnDao extends Dao
@@ -86,6 +87,7 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
 									+ "  KAIINNNO"
 									+ "  ,NAME"
 									+ "  ,REGISTDATE"
+									+ "  ,SEIBETU"
 									+ " from "
 									+ "   KAIINN "
 									+ "where"
@@ -101,6 +103,12 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
 				kaiinnVo.setKaiinnno(key);
 				kaiinnVo.setName(rset.getString(2));
 				kaiinnVo.setRegistdate(rset.getDate(3));
+				if(rset.getString(4) == SexEnum.man.getSex()) {
+					kaiinnVo.setSex(SexEnum.man);
+				}
+				else {
+					kaiinnVo.setSex(SexEnum.woman);
+				}
 
 				//System.out.println(rset.getString(1));
 			}

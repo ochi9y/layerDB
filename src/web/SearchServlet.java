@@ -48,6 +48,7 @@ public class SearchServlet extends HttpServlet {
 		searchBean.setId(kaiinnVo.getKaiinnno());
 		searchBean.setName(kaiinnVo.getName());
 		searchBean.setDate(kaiinnVo.getRegistdate());
+		searchBean.setSex(kaiinnVo.getSex());
 
 		request.setAttribute("bean", searchBean);
 

@@ -7,6 +7,8 @@ package vo;
 import java.io.Serializable;
 import java.util.Date;
 
+import domain.SexEnum;
+
 /**
  * KaiinnVo.
  * @author yosuke.ochi
@@ -34,6 +36,7 @@ public class KaiinnVo implements Serializable{
 	 */
 	private java.sql.Date registdate;
 
+	private SexEnum sex;
 	/**
 	* Constractor
 	*/
@@ -60,6 +63,14 @@ public class KaiinnVo implements Serializable{
 	public java.sql.Date getRegistdate(){ return this.registdate; }
 
 	public void setRegistdate(java.sql.Date registdate){ this.registdate = registdate; }
+
+	public SexEnum getSex() {
+		return sex;
+	}
+
+	public void setSex(SexEnum sex) {
+		this.sex = sex;
+	}
 
 	public String toString(){
 		StringBuffer buffer = new StringBuffer();
