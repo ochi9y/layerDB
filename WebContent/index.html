@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BeanStartWebApp</title>
+</head>
+<body>
+ 会員
+
+<form  method="POST" action="SearchServlet">
+	検索<br>
+	会員のIDを入力してください<input name="id" type="text" ><br>
+	<input type="submit" value="検索">
+</form>
+
+<form  method="POST" action="RegistServlet">
+	登録
+	会員のIDを入力してください<input name="id" type="text" ><br>
+	会員の名前を入力してください<input name="name" type="text" ><br>
+	<input type="submit" value="登録">
+</form>
+
+<form  method="POST" action="ListoutServlet">
+	表示<br>
+	<input type="submit" value="表示">
+</form>
+
+<form  method="POST" action="EndServlet">
+	終了<br>
+	<input type="submit" value="終了">
+</form>
+
+</body>
+</html>
