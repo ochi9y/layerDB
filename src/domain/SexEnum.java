@@ -1,8 +1,8 @@
 package domain;
 
 public enum SexEnum {
-	man("男"),
-	woman("女");
+	man("man"),
+	woman("woman");
 
 	private String sex;
 

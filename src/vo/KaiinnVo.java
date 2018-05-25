@@ -46,9 +46,10 @@ public class KaiinnVo implements Serializable{
 	* Constractor
 	* @param <code>kaiinnno</code>
 	*/
-	public KaiinnVo(int kaiinnno,String name){
+	public KaiinnVo(int kaiinnno,String name,SexEnum sex){
 		this.kaiinnno = kaiinnno;
 		this.name = name;
+		this.sex = sex;
 		this.registdate = new java.sql.Date((new Date()).getTime());
 	}
 

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.SearchBean;
 import service.KaiinnService;
-import vo.KaiinnVo;
 
 /**
  * Servlet implementation class SearchServlet
@@ -37,21 +36,13 @@ public class SearchServlet extends HttpServlet {
 
 		String num1id = request.getParameter("id");
 		int key = Integer.parseInt(num1id);
-		KaiinnVo kaiinnVo= new KaiinnVo();
 
 		KaiinnService kaiinnService = new KaiinnService();
 
-			kaiinnVo=kaiinnService.searchs(key);
+		SearchBean searchBean = kaiinnService.searchs(key);
 
-
-		SearchBean searchBean = new SearchBean();
-		searchBean.setId(kaiinnVo.getKaiinnno());
-		searchBean.setName(kaiinnVo.getName());
-		searchBean.setDate(kaiinnVo.getRegistdate());
-		searchBean.setSex(kaiinnVo.getSex());
 
 		request.setAttribute("bean", searchBean);
-
 		RequestDispatcher disp = request.getRequestDispatcher("/search.jsp");
 		disp.forward(request, response);
 

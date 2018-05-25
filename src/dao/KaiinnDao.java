@@ -100,15 +100,10 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
 			/* 取得したデータを表示します。 */
 			while (rset.next())
 			{
-				kaiinnVo.setKaiinnno(key);
+				kaiinnVo.setKaiinnno(rset.getInt(1));
 				kaiinnVo.setName(rset.getString(2));
 				kaiinnVo.setRegistdate(rset.getDate(3));
-				if(rset.getString(4) == SexEnum.man.getSex()) {
-					kaiinnVo.setSex(SexEnum.man);
-				}
-				else {
-					kaiinnVo.setSex(SexEnum.woman);
-				}
+				kaiinnVo.setSex(SexEnum.valueOf(rset.getString(4)));
 
 				//System.out.println(rset.getString(1));
 			}
