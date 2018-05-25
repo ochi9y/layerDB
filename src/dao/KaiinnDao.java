@@ -20,7 +20,7 @@ public class KaiinnDao extends Dao
         super(con);
     }
 
-public List<KaiinnVo> getAllCustomer() throws  SQLException
+public List<KaiinnVo> listoutM() throws  SQLException
 {
 
 
@@ -34,9 +34,7 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
         /* Statementの作成 */
         stmt = con.prepareStatement(
                       "select "
-                    + "   KAIINNNO"
-                    + " NAME"
-                    + "REGISTDATE"
+                    + "   *"
                     + " from "
                     + "   KAIINN "
                     );
@@ -45,11 +43,14 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
         /* ｓｑｌ実行 */
         rset = stmt.executeQuery();
 
-        /* 取得したデータを表示します。 */
+        /* 取得したデータを格納します。 */
         while (rset.next())
             {
                 KaiinnVo em = new KaiinnVo();
-                em.setKaiinnno(Integer.parseInt(rset.getString(1)) );
+                em.setKaiinnno(rset.getInt(1) );
+                em.setName(rset.getString(2));
+                em.setRegistdate(rset.getDate(3));
+                em.setSex(rset.getString(4));
                 list.add(em);
 
                 //System.out.println(rset.getString(1));

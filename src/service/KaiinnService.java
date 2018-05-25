@@ -2,7 +2,11 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import bean.KaiinLineBean;
+import bean.ListoutBean;
 import bean.RegistBean;
 import bean.SearchBean;
 import dao.Dao;
@@ -16,7 +20,7 @@ public class KaiinnService {
         try
         (
                 Connection c=Dao.getConnection();
-        )
+                )
         {
             KaiinnDao kaiinndao = new KaiinnDao();
             KaiinnVo kaiinnVo = kaiinndao.searchM(c,key);
@@ -39,27 +43,54 @@ public class KaiinnService {
     }
 
     public RegistBean regists(int key, String name, String seibetu)
+    {
+        try
+        (
+                Connection c=Dao.getConnection();
+                )
         {
-            try
-            (
-                    Connection c=Dao.getConnection();
-            )
+            KaiinnVo kaiinnVo = new KaiinnVo(key,name,seibetu);
+            KaiinnDao kaiinndao = new KaiinnDao();
+            kaiinndao.registM(c,kaiinnVo);
+
+            RegistBean registBean = new RegistBean();
+
+            registBean.setId(kaiinnVo.getKaiinnno());
+            registBean.setName(kaiinnVo.getName());
+            registBean.setDate(kaiinnVo.getRegistdate());
+            registBean.setSex(SexEnum.valueOf(kaiinnVo.getSex()));
+            return registBean;
+        }
+        catch(ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public ListoutBean listouts()
+    {
+        try
+        (
+                Connection c=Dao.getConnection();
+                )
+        {
+            ListoutBean listoutBean = new ListoutBean();
+            KaiinnDao kaiinnDao = new KaiinnDao();
+            List<KaiinnVo> kaiinnL = new ArrayList<KaiinnVo>();
+            kaiinnL = kaiinnDao.listoutM();
+
+            for(int i=0;i<kaiinnL.size();i++)
             {
-                KaiinnVo kaiinnVo = new KaiinnVo(key,name,seibetu);
-                KaiinnDao kaiinndao = new KaiinnDao();
-                kaiinndao.registM(c,kaiinnVo);
+                KaiinLineBean line = new KaiinLineBean();
+                line.setId(kaiinnL.getId(i));
 
-                RegistBean registBean = new RegistBean();
-
-                registBean.setId(kaiinnVo.getKaiinnno());
-                registBean.setName(kaiinnVo.getName());
-                registBean.setDate(kaiinnVo.getRegistdate());
-                registBean.setSex(SexEnum.valueOf(kaiinnVo.getSex()));
-                return registBean;
+                //System.out.println(rset.getString(1));
             }
-            catch(ClassNotFoundException | SQLException e) {
-                throw new RuntimeException(e);
-            }
+            return listoutBean;
+        }
+        catch(ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
