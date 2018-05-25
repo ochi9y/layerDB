@@ -19,12 +19,16 @@ public class KaiinnService {
 			KaiinnDao kaiinndao = new KaiinnDao();
 			KaiinnVo kaiinnVo = kaiinndao.searchM(c,key);
 			SearchBean searchBean = new SearchBean();
-
+			if(kaiinnVo == null)
+			{
+				searchBean.setExist(false);
+				return searchBean;
+			}
 			searchBean.setId(kaiinnVo.getKaiinnno());
 			searchBean.setName(kaiinnVo.getName());
 			searchBean.setDate(kaiinnVo.getRegistdate());
 			searchBean.setSex(kaiinnVo.getSex());
-
+			searchBean.setExist(true);
 			return searchBean;
 		}
 		catch(ClassNotFoundException | SQLException e) {

@@ -76,7 +76,7 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
 
 	public KaiinnVo searchM(Connection c,int key) throws SQLException
 	{
-		KaiinnVo kaiinnVo = new KaiinnVo();
+		KaiinnVo kaiinnVo = null;
 		PreparedStatement stmt = null;
 		ResultSet rset = null;
 		con = c;
@@ -100,6 +100,7 @@ public List<KaiinnVo> getAllCustomer() throws  SQLException
 			/* 取得したデータを表示します。 */
 			while (rset.next())
 			{
+				kaiinnVo = new KaiinnVo();
 				kaiinnVo.setKaiinnno(rset.getInt(1));
 				kaiinnVo.setName(rset.getString(2));
 				kaiinnVo.setRegistdate(rset.getDate(3));

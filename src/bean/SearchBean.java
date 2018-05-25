@@ -9,6 +9,8 @@ public class SearchBean {
 	private String name;
 	private Date date;
 	private SexEnum sex;
+	private boolean isExist;
+
 
 	public int getId() {
 		return id;
@@ -33,6 +35,12 @@ public class SearchBean {
 	}
 	public void setSex(SexEnum sex) {
 		this.sex = sex;
+	}
+	public boolean isExist() {
+		return isExist;
+	}
+	public void setExist(boolean isExist) {
+		this.isExist = isExist;
 	}
 
 

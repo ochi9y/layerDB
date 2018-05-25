@@ -8,9 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%if(bean.isExist()){%>
+
 <%=bean.getId()%>
 <%=bean.getName()%>
 <%=bean.getDate() %>
 <%=bean.getSex().getSex() %>
+<% } else {%>
+その会員はいません。
+<%} %>
 </body>
 </html>
